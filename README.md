@@ -42,3 +42,14 @@ Lyfiti Task é um dashboard inteligente desenvolvido em **Next.js (App Router)**
 Acesse a aba de **Dashboard**, insira o **Título** (ex: _"Resolver vazamento de memória do banco de dados"_) e uma **Descrição Contextual**. 
 
 Clique em **"Evaluate & Create Task"**. O sistema enviará para a Rota `/api/prioritize`, acionando o LLM. Em instantes o _Card_ aparecerá em tela, e sua pontuação de impacto colorirá dinamicamente o componente (Verde = Baixo, Laranja = Médio, Vermelho = Alto).
+
+---
+
+## 🧠 Prompt System Utilizado (LLM)
+Para garantir que a IA retornasse os dados no formato exato e avaliasse corretamente a urgência, o seguinte System Prompt foi utilizado na rota da API:
+
+> You are an expert AI task manager. Evaluate the following task based on its title and description to determine its urgency and impact.
+> Your response MUST be strictly a JSON object containing exactly two fields:
+> - "score": an integer from 1 to 10 (10 being highest priority).
+> - "justification": a brief, one-sentence explaining the reasoning for the score.
+> Do not include any other text or markdown formatting outside of the JSON block.
