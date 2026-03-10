@@ -1,24 +1,24 @@
-import Image from "next/image";
+"use client";
+
+import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-center">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+    <Flex minH="100vh" direction="column" align="center" justify="center" p={8}>
+      <Flex direction="column" gap={8} align="center" textAlign="center">
+        <Heading as="h1" fontSize={{ base: "5xl", sm: "7xl" }} fontWeight="extrabold" letterSpacing="tight">
           Lyfiti Task
-        </h1>
-        <p className="max-w-xl text-lg mt-4 text-center">
-          Starting point for the Next.js application, ready for additional layout and components.
-        </p>
-        <div className="flex gap-4 items-center flex-col sm:flex-row mt-8">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="/dashboard"
-          >
+        </Heading>
+        <Text maxW="xl" fontSize="lg" mt={4}>
+          Starting point for the Next.js application, fully migrated to Chakra UI v2.
+        </Text>
+        <Flex gap={4} mt={8}>
+          <Button as={Link} href="/dashboard" colorScheme="blue" size="lg" borderRadius="full">
             Go to Dashboard
-          </a>
-        </div>
-      </main>
-    </div>
+          </Button>
+        </Flex>
+      </Flex>
+    </Flex>
   );
 }
