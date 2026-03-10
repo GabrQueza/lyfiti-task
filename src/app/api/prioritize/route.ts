@@ -43,6 +43,17 @@ Do not include any other text or markdown formatting outside of the JSON block.`
   } catch (error: any) {
     console.error('Error in /api/prioritize:', error);
     
+    // Check if it's a quota exceeded error (429) from OpenAI
+    if (error?.status === 429 || error?.code === 'insufficient_quota') {
+       return NextResponse.json(
+        { 
+          score: Math.floor(Math.random() * 10) + 1, 
+          justification: "[MOCK RESPONSE - OpenAI Quota Exceeded] This task seems important based on the description provided." 
+        },
+        { status: 200 }
+      );
+    }
+
     // Provide a generic user-facing message, log the details server-side
     return NextResponse.json(
       { error: 'Internal Server Error while prioritizing task.' },
